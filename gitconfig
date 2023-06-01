@@ -1,0 +1,89 @@
+[include]
+    path = ~/.gitconfig.local
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "branch"]
+    current = white reverse
+    local = white
+    remote = cyan
+
+[color "diff"]
+    meta = cyan
+    frag = magenta
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = magenta
+
+[alias]
+    fa = fetch --all
+    # Fetch most (important remotes)
+    fm = fetch --multiple origin upstream
+    far = fetch --all --recurse-submodules
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    diffc = diff --check
+    undo-last-commit = reset --soft HEAD^
+    tree = log --graph --pretty=oneline --abbrev-commit --decorate --color
+    t = log --graph --pretty=oneline --abbrev-commit --decorate --color
+    ta = log --graph --pretty=oneline --abbrev-commit --decorate --color --all
+    local = log --pretty=oneline @{u}..HEAD
+    rewrite = rebase -i --autosquash @{u}
+    pr = pull --rebase
+    rh = reset --hard
+    co = checkout
+    rename = branch -m
+    dry-run-merge = merge --no-commit --no-ff
+    mnff = merge --no-ff
+    switch = !legit switch \"$@\"
+    branches = !legit branches
+    sprout = !legit sprout \"$@\"
+    unpublish = !legit unpublish \"$@\"
+    harvest = !legit harvest \"$@\"
+    sync = !legit sync \"$@\"
+    publish = !legit publish \"$@\"
+    graft = !legit graft \"$@\"
+    list-submodules = config --file .gitmodules --get-regexp path
+    ctags = !.git/hooks/ctags
+
+[apply]
+    whitespace = strip
+
+[pager]
+    color = true
+
+[status]
+    color = true
+
+[core]
+    whitespace = trailing-space,space-before-tab
+    excludesfile = ~/.gitignore_global
+    editor = nvim
+    autocrlf = input
+
+[filter "media"]
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
+
+[push]
+    default = current
+[filter "lfs"]
+    required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+[init]
+    templatedir = ~/.git-template
+    defaultBranch = main
+[user]
+    useConfigOnly = true
+[pull]
+    rebase = false

@@ -1,0 +1,5 @@
+[user]
+	email = koaps@null.local
+	name = Koaps
+[push]
+	default = simple
