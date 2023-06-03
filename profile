@@ -20,3 +20,8 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# source cargo env if it exists
+if [ -d "$HOME/bin" ] ; then
+    . "$HOME/.cargo/env"
+fi

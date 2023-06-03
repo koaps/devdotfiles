@@ -30,3 +30,8 @@ done
 if ((BASH_VERSINFO >= 4))
     then shopt -s direxpand
 fi
+
+# source cargo env if it exists
+if [ -d "$HOME/bin" ] ; then
+    . "$HOME/.cargo/env"
+fi

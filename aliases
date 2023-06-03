@@ -146,3 +146,8 @@ dsh () {
 
 # venv
 alias venv=". **/bin/activate"
+alias vdev="source ~/Devel/venv/bin/activate"
+
+# misc
+alias dus="find . -maxdepth 1 -type d -exec du -ch -d1 '{}' +"
+alias dus_g="find . -maxdepth 1 -type d -exec du -ch -d1 '{}' + | grep -P '^[0-9]+(?:.[0-9]+)?G\s+.*$'"
