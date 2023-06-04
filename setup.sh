@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTDIR=$(pwd)
+DOTDIR=~/.dotfiles
 
 ln -sf $DOTDIR/aliases ~/.aliases
 ln -sf $DOTDIR/bash_logout ~/.bash_logout
