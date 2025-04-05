@@ -146,3 +146,4 @@ dsh () {
 
 # venv
 alias venv=". **/bin/activate"
+alias vdev="source ~/Devel/venv/bin/activate"
