@@ -11,7 +11,3 @@ ln -sf $DOTDIR/extra ~/.extra
 ln -sf $DOTDIR/profile ~/.profile
 ln -sf $DOTDIR/gitconfig ~/.gitconfig
 ln -sf $DOTDIR/gitconfig.local ~/.gitconfig.local
-ln -sf $DOTDIR/vimrc ~/.vimrc
-
-mkdir ~/.config
-ln -sf $DOTDIR/nvim ~/.config/nvim
