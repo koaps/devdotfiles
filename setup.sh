@@ -11,7 +11,3 @@ ln -sf $DOTDIR/extra ~/.extra
 ln -sf $DOTDIR/profile ~/.profile
 ln -sf $DOTDIR/gitconfig ~/.gitconfig
 ln -sf $DOTDIR/gitconfig.local ~/.gitconfig.local
-
-if [ -f $(which nvim) ]; then
-  nvim -u $DOTDIR/kickstart-python.lua /tmp/foobar.py
-fi
