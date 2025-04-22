@@ -20,6 +20,13 @@ vim.opt.rtp:prepend(lazypath)
 --- Custom Options / Keymaps
 --------------------------------------------------------------------------------
 
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 -- set leader key to space
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -122,18 +129,22 @@ local plugins = {
                 capabilities = lspCapabilities,
             })
 
-            -- ruff uses an LSP proxy, therefore it needs to be enabled
+            -- ruff uses an LSP proxy, therefore it needs to be enabled as if it
+            -- were a LSP. In practice, ruff only provides linter-like diagnostics
+            -- and some code actions, and is not a full LSP yet.
             require("lspconfig").ruff.setup({
-              init_options = {
-                settings = {
-                  lint = {
-                    preview = true,
-                    select = {"E4", "E7", "E9", "F", "B"},
-                    ignore = {"E501"},
-                    unfixable = {"B"},
+                  init_options = {
+                    settings = {
+                      lint = {
+                        preview = true,
+                        select = {"E4", "E7", "E9", "F", "B"},
+                        ignore = {"E501"},
+                        unfixable = {"B"},
+                      }
+                    }
                   }
-                }
-              }
+                -- disable ruff as hover provider to avoid conflicts with pyright
+                -- on_attach = function(client) client.server_capabilities.hoverProvider = false end,
             })
         end,
     },
@@ -168,6 +179,15 @@ local plugins = {
         opts_extend = { "sources.default" }
     },
 
+    -- AUTO PAIRING
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
+    },
+
     -- SNIPPETS
     { "rafamadriz/friendly-snippets" },
 
@@ -184,6 +204,45 @@ local plugins = {
                 -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-cool-snippets" } })
             	-- Note: It's mandatory to have a 'package.json' file in the snippet directory.
 	    end,
+    },
+
+    -- TROUBLE
+    {
+      "folke/trouble.nvim",
+      opts = {}, -- for default options, refer to the configuration section for custom setup.
+      cmd = "Trouble",
+      keys = {
+        {
+          "<leader>xx",
+          "<cmd>Trouble diagnostics toggle<cr>",
+          desc = "Diagnostics (Trouble)",
+        },
+        {
+          "<leader>xX",
+          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+          desc = "Buffer Diagnostics (Trouble)",
+        },
+        {
+          "<leader>cs",
+          "<cmd>Trouble symbols toggle focus=false<cr>",
+          desc = "Symbols (Trouble)",
+        },
+        {
+          "<leader>cl",
+          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+          desc = "LSP Definitions / references / ... (Trouble)",
+        },
+        {
+          "<leader>xL",
+          "<cmd>Trouble loclist toggle<cr>",
+          desc = "Location List (Trouble)",
+        },
+        {
+          "<leader>xQ",
+          "<cmd>Trouble qflist toggle<cr>",
+          desc = "Quickfix List (Trouble)",
+        },
+      },
     },
 
 
@@ -321,6 +380,23 @@ local plugins = {
           require('lualine').setup()
           options = { theme = 'codedark' }
         end,
+    },
+
+    -----------------------------------------------------------------------------
+    -- FUZZY FINDING
+    { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+
+    -- FILE TREE
+    {
+      "nvim-tree/nvim-tree.lua",
+      version = "*",
+      lazy = false,
+      dependencies = {
+        "nvim-tree/nvim-web-devicons",
+      },
+      config = function()
+        require("nvim-tree").setup {}
+      end,
     },
 
     -----------------------------------------------------------------------------
@@ -474,7 +550,39 @@ local plugins = {
     },
 
     -----------------------------------------------------------------------------
-    -- Highlight Whitespace
+    -- WHICH KEY
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+      keys = {
+        {
+          "<leader>?",
+          function()
+            require("which-key").show({ global = false })
+          end,
+          desc = "Buffer Local Keymaps (which-key)",
+        },
+      },
+    },
+
+    -----------------------------------------------------------------------------
+    -- DASHBOARD
+    {
+      'nvimdev/dashboard-nvim',
+      event = 'VimEnter',
+      config = function()
+            require('dashboard').setup {
+          -- config
+        }
+      end,
+      dependencies = { {'nvim-tree/nvim-web-devicons'}}
+    },
+
 
 }  -- END ----------------------------------------------------------------------
 
@@ -496,6 +604,15 @@ vim.keymap.set({"i", "s"}, "<C-E>", function()
 		ls.change_choice(1)
 	end
 end, {silent = true})
+
+-- telescope maps
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+
 
 --------------------------------------------------------------------------------
 -- SETUP BASIC PYTHON-RELATED OPTIONS
@@ -545,11 +662,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client == nil then
       return
     end
-<<<<<<< HEAD
     if client.name == 'ruff' then
-=======
-    if client.name == 'pyright' then
->>>>>>> 1de8c23 (Sync main)
       -- Disable hover in favor of Pyright
       client.server_capabilities.hoverProvider = true
     end
