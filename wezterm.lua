@@ -11,8 +11,9 @@ config.audible_bell = "Disabled"
 -- config.color_scheme = 'Aco'
 -- config.color_scheme = '3024 Night'
 -- config.color_scheme = 'Atelierhealth (dark) (terminal.sexy)'
-config.color_scheme = 'darkmatrix'
+-- config.color_scheme = 'darkmatrix'
 -- config.color_scheme = 'darkermatrix'
+config.color_scheme = 'dracula'
 -- config.color_scheme = 'Ef-Tritanopia-Dark'
 -- config.color_scheme = 'Elementary (Gogh)'
 -- config.color_scheme = 'Framer'
@@ -30,8 +31,8 @@ config.colors = {
 
     -- The active tab is the one that has focus in the window
     active_tab = {
-      bg_color = '#000000',
-      fg_color = '#226290', -- bluish
+      bg_color = '#26393d',
+      fg_color = '#ffffff', -- bluish
       underline = 'Single',
     },
 
@@ -65,7 +66,11 @@ config.colors = {
 
 config.font = wezterm.font 'Hack Nerd Font Mono'
 
+config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
+
+config.initial_rows = 48
+config.initial_cols = 150
 
 config.keys = {
 
@@ -97,6 +102,8 @@ config.visual_bell = {
   fade_out_function = 'EaseOut',
   fade_out_duration_ms = 150,
 }
+
+config.window_decorations = "RESIZE"
 
 config.window_frame = {
   font = wezterm.font { family = 'Roboto', weight = 'Bold' },
