@@ -138,9 +138,9 @@ local plugins = {
         },
         opts = {
             ensure_installed = {
-                "pyright", -- LSP for python
-                "ruff", -- linter & formatter (includes flake8, pep8, black, isort, etc.)
-                "debugpy", -- debugger
+                -- "pyright", -- LSP for python
+                -- "ruff", -- linter & formatter (includes flake8, pep8, black, isort, etc.)
+                -- "debugpy", -- debugger
                 "taplo", -- LSP for toml (e.g., for pyproject.toml files)
             },
         },
@@ -513,19 +513,19 @@ local plugins = {
     -- Configuration for the python debugger
     -- * configures debugpy for us
     -- * uses the debugpy installation from mason
-    {
-        "mfussenegger/nvim-dap-python",
-        dependencies = "mfussenegger/nvim-dap",
-        config = function()
+    -- {
+    --    "mfussenegger/nvim-dap-python",
+    --    dependencies = "mfussenegger/nvim-dap",
+    --    config = function()
             -- fix: E5108: Error executing lua .../Local/nvim-data/lazy/nvim-dap-ui/lua/dapui/controls.lua:14: attempt to index local 'element' (a nil value)
             -- see: https://github.com/rcarriga/nvim-dap-ui/issues/279#issuecomment-1596258077
-            require("dapui").setup()
+     --       require("dapui").setup()
             -- uses the debugypy installation by mason
-            local debugpyPythonPath = require("mason-registry").get_package("debugpy"):get_install_path()
-                .. "/venv/bin/python3"
-            require("dap-python").setup(debugpyPythonPath, {}) ---@diagnostic disable-line: missing-fields
-        end,
-    },
+     --       local debugpyPythonPath = require("mason-registry").get_package("debugpy"):get_install_path()
+     --           .. "/venv/bin/python3"
+     --       require("dap-python").setup(debugpyPythonPath, {}) ---@diagnostic disable-line: missing-fields
+     --   end,
+    --},
 
     -----------------------------------------------------------------------------
     -- EDITING SUPPORT PLUGINS
