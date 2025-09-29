@@ -1,0 +1,35 @@
+-----------------------------------------------------------------------------
+-- OLLAMA SUPPORT PLUGINS
+return {
+--  "olimorris/codecompanion.nvim",
+--  dependencies = {
+--        "nvim-lua/plenary.nvim",
+--        "nvim-treesitter/nvim-treesitter",
+--  },
+--  init = function()
+--    require("codecompanion").setup({
+--      adapters = {
+--        ollama = function()
+--          return require("codecompanion.adapters").extend("ollama", {
+--            env = {
+--              url = "http://192.168.0.254:"
+--            },
+--            headers = {
+--              ["Content-Type"] = "application/json"
+--            },
+--            name = "NAI-PP-3B",
+--            parameters = {
+--              sync = true
+--            },
+--            schema = {
+--              model = {
+--                default = "0xroyce/NazareAI-Python-Programmer-3B"
+--              },
+--              temperature = 0.3,
+--            }
+--          })
+--        end
+--      },
+--    })
+--  end,
+}
