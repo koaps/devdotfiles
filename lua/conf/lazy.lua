@@ -16,7 +16,7 @@ if not lazyLocallyAvailable then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "luaconf.plugins" }, { import = "luaconf.plugins.lsp" } }, {
+require("lazy").setup({ { import = "conf.plugins" }, { import = "conf.plugins.lsp" } }, {
   checker = {
     enabled = true,
     notify = false,

@@ -1,2 +1,2 @@
-require("luaconf.core")
-require("luaconf.lazy")
+require("conf.core")
+require("conf.lazy")

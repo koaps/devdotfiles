@@ -14,6 +14,6 @@ ln -sf $DOTDIR/gitconfig.local ~/.gitconfig.local
 
 nvim -u init.lua foobar.py +qa
 ln -sf $DOTDIR/init.lua ~/.config/nvim/init.lua
-ln -sf $DOTDIR/luaconf ~/.config/nvim/luaconf
+ln -sf $DOTDIR/lua ~/.config/nvim/lua
 
 ln -sf $DOTDIR/wezterm.lua ~/.wezterm.lua
