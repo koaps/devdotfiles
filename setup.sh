@@ -12,8 +12,8 @@ ln -sf $DOTDIR/profile ~/.profile
 ln -sf $DOTDIR/gitconfig ~/.gitconfig
 ln -sf $DOTDIR/gitconfig.local ~/.gitconfig.local
 
-nvim -u init.lua foobar.py +qa
-ln -sf $DOTDIR/init.lua ~/.config/nvim/init.lua
-ln -sf $DOTDIR/lua ~/.config/nvim/lua
+mkdir ~/.config
+ln -sf $DOTDIR/nvim ~/.config/nvim
+nvim foobar.py +qa
 
 ln -sf $DOTDIR/wezterm.lua ~/.wezterm.lua
