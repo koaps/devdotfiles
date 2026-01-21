@@ -7,7 +7,7 @@ if not lazyLocallyAvailable then
     if out.code ~= 0 then
         vim.api.nvim_echo({
             { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out, "WarningMsg" },
+            { out,                            "WarningMsg" },
             { "\nPress any key to exit..." },
         }, true, {})
         vim.fn.getchar()
@@ -16,12 +16,12 @@ if not lazyLocallyAvailable then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "conf.plugins" }, { import = "conf.plugins.lsp" } }, {
-  checker = {
-    enabled = true,
-    notify = false,
-  },
-  change_detection = {
-    notify = false,
-  },
+require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+    change_detection = {
+        notify = false,
+    },
 })
