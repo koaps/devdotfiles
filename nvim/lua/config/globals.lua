@@ -1,11 +1,9 @@
 -- ================================================================================================
--- TITLE : gitsigns.nvim
--- ABOUT : deep buffer integration for git.
--- LINKS :
---   > github : https://github.com/lewis6991/gitsigns.nvim
+-- TITLE : globals
+-- ABOUT : global & local leaders
 -- ================================================================================================
 
-return {
-  "lewis6991/gitsigns.nvim",
-  opts = {},
-}
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python3"

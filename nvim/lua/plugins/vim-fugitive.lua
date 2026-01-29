@@ -1,11 +1,10 @@
 -- ================================================================================================
--- TITLE : gitsigns.nvim
--- ABOUT : deep buffer integration for git.
+-- TITLE : vim-fugitive
+-- ABOUT : A Git wrapper plugin for Vim and Neovim. Provides powerful Git integration and commands.
 -- LINKS :
---   > github : https://github.com/lewis6991/gitsigns.nvim
+--   > github : https://github.com/tpope/vim-fugitive
 -- ================================================================================================
 
 return {
-  "lewis6991/gitsigns.nvim",
-  opts = {},
+  "tpope/vim-fugitive",
 }
