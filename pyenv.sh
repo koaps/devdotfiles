@@ -2,7 +2,10 @@
 
 PYVER=3.14.2
 
-brew install pyenv
+curl https://pyenv.run | bash
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
 PYTHON_CONFIGURE_OPTS="--disable-ipv6 --enable-optimizations --enable-shared" pyenv install $PYVER
 
@@ -16,3 +19,5 @@ git clone https://github.com/pyenv/pyenv-doctor.git $(pyenv root)/plugins/pyenv-
 git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
 git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 git clone https://github.com/pyenv/pyenv-which-ext.git $(pyenv root)/plugins/pyenv-which-ext
+
+eval "$(pyenv virtualenv-init -)"
