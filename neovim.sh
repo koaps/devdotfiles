@@ -2,6 +2,8 @@
 
 DOTDIR=$(pwd)
 
+pip3 install typed-ast --upgrade
+
 if [ "$(uname -s)" == 'Darwin' ]; then
 	brew install fd \
 		font-mononoki-nerd-font font-hack-nerd-font \
@@ -14,7 +16,7 @@ if [ "$(uname -s)" == 'Darwin' ]; then
 		ripgrep \
 		ruff \
 		tree-sitter-cli \
-		else
+else
 	sudo apt install \
 		fonts-mononoki \
 		fzf \
@@ -31,3 +33,7 @@ mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 ln -sf $DOTDIR/nvim $XDG_CONFIG_HOME/nvim
 
 nvim foo +qa
+
+pyenv virtualenv 3.14.2 neovim
+pyenv shell neovim
+pip install pynvim
