@@ -12,11 +12,9 @@ if [ "$(uname -s)" == 'Darwin' ]; then
 		lazygit \
 		luarocks \
 		neovim \
-		pyright \
 		ripgrep \
-		ruff \
 		tree-sitter-cli \
-else
+		else
 	sudo apt install \
 		fonts-mononoki \
 		fzf \
@@ -36,4 +34,4 @@ nvim foo +qa
 
 pyenv virtualenv 3.14.2 neovim
 pyenv shell neovim
-pip install pynvim
+pip install pynvim pyright ruff
