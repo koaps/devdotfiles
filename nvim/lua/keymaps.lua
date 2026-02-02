@@ -87,16 +87,21 @@ vim.keymap.set(
   { desc = "Edit config" }
 )
 
--- File Explorer
-vim.keymap.set(
-  "n",
-  "<leader>m",
-  "<Cmd>NvimTreeFocus<CR>",
-  { desc = "Focus on File Explorer" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>e",
-  "<Cmd>NvimTreeToggle<CR>",
-  { desc = "Toggle File Explorer" }
-)
+-- Update and source file
+vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
+
+-- Save
+vim.keymap.set( "n", "<leader>w", ":write<CR>")
+
+-- Quit
+vim.keymap.set( "n", "<leader>q", ":quit<CR>")
+
+-- Oil
+vim.keymap.set( "n", "<leader>e", ":Oil<CR>")
+
+-- Pick
+vim.keymap.set( "n", "<leader>f", ":Pick files<CR>")
+
+-- LSP Format
+vim.keymap.set( "n", "<leader>lf", vim.lsp.buf.format)
+

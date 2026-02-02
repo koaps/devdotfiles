@@ -2,7 +2,6 @@
 -- TITLE : NeoVim auto-commands
 -- ABOUT : automatically run code on defined events (e.g. save, yank)
 -- ==================================================================
-local on_attach = require("utils.lsp").on_attach
 
 -- Restore last cursor position when reopening a file
 local last_cursor_group = vim.api.nvim_create_augroup("LastCursorGroup", {})
@@ -30,22 +29,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Format on save using efm langserver and configured formatters
-local lsp_fmt_group = vim.api.nvim_create_augroup("FormatOnSaveGroup", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = lsp_fmt_group,
-  callback = function()
-    local efm = vim.lsp.get_clients({ name = "efm" })
-    if vim.tbl_isempty(efm) then
-      return
+-- Autocomplete
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
-    vim.lsp.buf.format({ name = "efm", async = true })
   end,
 })
-
--- On attach function shortcuts
-local lsp_on_attach_group = vim.api.nvim_create_augroup("LspMappings", {})
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = lsp_on_attach_group,
-  callback = on_attach,
-})
+vim.cmd("set completeopt+=noselect")
