@@ -32,7 +32,7 @@ if ((BASH_VERSINFO >= 4))
 fi
 
 # source cargo env if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/.cargo" ] ; then
     . "$HOME/.cargo/env"
 fi
 
