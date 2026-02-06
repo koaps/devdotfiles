@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.hl.on_yank({
       higroup = "IncSearch",
       timeout = 200,
-      visual = true
+      visual = true,
     })
   end,
 })
@@ -79,7 +79,10 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 
 -- IDE like highlight when stopping cursor
 vim.api.nvim_create_autocmd("CursorMoved", {
-  group = vim.api.nvim_create_augroup("LspReferenceHighlight", { clear = true }),
+  group = vim.api.nvim_create_augroup(
+    "LspReferenceHighlight",
+    { clear = true }
+  ),
   desc = "Highlight references under cursor",
   callback = function()
     -- Only run if the cursor is not in insert mode
