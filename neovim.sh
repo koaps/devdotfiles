@@ -5,25 +5,23 @@ DOTDIR=$(pwd)
 pip3 install typed-ast --upgrade
 
 if [ "$(uname -s)" == 'Darwin' ]; then
-	brew install fd \
-		font-mononoki-nerd-font font-hack-nerd-font \
-		fzf \
-		go \
-		lazygit \
-		luarocks \
-		neovim \
-		ripgrep \
-		tree-sitter-cli \
-		else
-	sudo apt install \
-		fonts-mononoki \
-		fzf \
-		golang \
-		lazygit \
-		luarocks \
-		neovim \
-		ripgrep \
-		tree-sitter-cli -y
+  brew install fd \
+    font-mononoki-nerd-font font-hack-nerd-font \
+    fzf \
+    go \
+    lazygit \
+    luarocks \
+    neovim \
+    ripgrep \
+else
+  sudo apt install -y \
+    fonts-mononoki \
+    fzf \
+    golang \
+    lazygit \
+    luarocks \
+    neovim \
+    ripgrep
 fi
 
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}

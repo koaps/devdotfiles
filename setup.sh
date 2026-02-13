@@ -16,4 +16,7 @@ mkdir ~/.config
 ln -sf $DOTDIR/nvim ~/.config/nvim
 nvim foobar.py +qa
 
+mkdir -p ~/.config/go/telemetry
+ln -sf $DOTDIR/go_mode ~/.config/go/telemetry/mode
+
 ln -sf $DOTDIR/wezterm.lua ~/.wezterm.lua

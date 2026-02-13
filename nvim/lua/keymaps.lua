@@ -101,7 +101,3 @@ vim.keymap.set( "n", "<leader>e", ":Oil<CR>")
 
 -- Pick
 vim.keymap.set( "n", "<leader>f", ":Pick files<CR>")
-
--- LSP Format
-vim.keymap.set( "n", "<leader>lf", vim.lsp.buf.format)
-

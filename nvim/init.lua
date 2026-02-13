@@ -1,6 +1,5 @@
 require("globals")
 require("options")
 require("pack")
-require("lspconfig")
 require("autocmds")
 require("keymaps")
