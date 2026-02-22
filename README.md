@@ -2,16 +2,16 @@
 <hr>
 
 <h3>Create symlink to files</h3>
-```console
+<code>
 ./create_symlinks.sh
-```
+</code>
 
 <h3>Setup pyenv</h3>
-```console
+<code>
 ./pyenv.sh
-```
+</code>
 
 <h3>Setup neovim</h3>
-```console
+<code>
 ./neovim.sh
-```
+</code>
