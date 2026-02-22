@@ -1,4 +1,4 @@
-<h1>Devotfiles</h1>
+<h1>Dev Dotfiles</h1>
 <hr>
 
 <h3>Create symlink to files</h3>
