@@ -12,10 +12,6 @@ ln -sf $DOTDIR/profile ~/.profile
 ln -sf $DOTDIR/gitconfig ~/.gitconfig
 ln -sf $DOTDIR/gitconfig.local ~/.gitconfig.local
 
-mkdir ~/.config
-ln -sf $DOTDIR/nvim ~/.config/nvim
-nvim foobar.py +qa
-
 mkdir -p ~/.config/go/telemetry
 ln -sf $DOTDIR/go_mode ~/.config/go/telemetry/mode
 

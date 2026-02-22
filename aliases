@@ -122,28 +122,6 @@ pushsync () {
 alias vi='nvim'
 alias vim='nvim'
 
-# docker
-docker_cleanup () {
-  docker ps -aqf status=exited | xargs -I{} docker rm {}
-  docker images -q -f dangling=true | xargs -I{} docker rmi {}
-}
-
-docker_prune () {
-  docker image prune -a -f
-}
-
-docker_start () {
-  open --background -a Docker
-}
-
-docker_stop () {
-  osascript -e 'quit app "Docker"'
-}
-
-dsh () {
-  docker exec -it "$1" /bin/bash
-}
-
 # venv
 alias venv=". **/bin/activate"
 alias vdev="source ~/Devel/venv/bin/activate"
