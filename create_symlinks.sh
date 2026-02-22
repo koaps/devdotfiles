@@ -1,6 +1,10 @@
 #!/bin/bash
 
-DOTDIR=~/.dotfiles
+DOTDIR=$HOME/.dotfiles
+
+if [ ! -d $DOTDIR ]; then
+  ln -sf $(pwd) $DOTDIR
+fi
 
 ln -sf $DOTDIR/aliases ~/.aliases
 ln -sf $DOTDIR/bash_logout ~/.bash_logout
@@ -12,7 +16,7 @@ ln -sf $DOTDIR/profile ~/.profile
 ln -sf $DOTDIR/gitconfig ~/.gitconfig
 ln -sf $DOTDIR/gitconfig.local ~/.gitconfig.local
 
-mkdir -p ~/.config/go/telemetry
-ln -sf $DOTDIR/go_mode ~/.config/go/telemetry/mode
+mkdir -p $HOME/.config/go/telemetry
+ln -sf $DOTDIR/go_mode $HOME/.config/go/telemetry/mode
 
 ln -sf $DOTDIR/wezterm.lua ~/.wezterm.lua
