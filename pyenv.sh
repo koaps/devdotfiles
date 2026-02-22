@@ -2,7 +2,9 @@
 
 PYVER=3.14.2
 
-curl https://pyenv.run | bash
+if [ ! -d "$HOME/.pyenv" ]; then
+  curl https://pyenv.run | bash
+fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
