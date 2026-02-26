@@ -24,7 +24,7 @@ fi
 echo "A" | nvim --headless foo +qa
 
 if [ -d $HOME/.pyenv ]; then
-  pyenv virtualenv 3.14.2 neovim
+  pyenv virtualenv 3.14.3 neovim
   pyenv shell neovim
   pip install pynvim pyright ruff
 fi
