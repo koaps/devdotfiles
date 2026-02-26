@@ -124,7 +124,7 @@ alias vim='nvim'
 
 # venv
 alias venv=". **/bin/activate"
-alias vdev="pyenv local vdev"
+alias vdev="pyenv activate vdev"
 
 # misc
 alias dus="find . -maxdepth 1 -type d -exec du -ch -d1 '{}' +"
