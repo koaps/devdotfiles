@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PYVER=3.14.2
+PYVER=3.14.3
 
 sudo apt install make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev curl git \
