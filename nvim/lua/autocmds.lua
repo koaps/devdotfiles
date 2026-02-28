@@ -3,9 +3,12 @@
 -- ABOUT : automatically run code on defined events (e.g. save, yank)
 -- ==================================================================
 
+local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
+
 -- Restore last cursor position when reopening a file
 vim.api.nvim_create_autocmd("BufReadPost", {
-  group = vim.api.nvim_create_augroup("LastCursorGroup", {}),
+  group = augroup,
+  desc = "Restore last cursor position",
   callback = function(args)
     local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
     local line_count = vim.api.nvim_buf_line_count(args.buf)
@@ -21,7 +24,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- Highlight the yanked text for 200ms
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+  group = augroup,
   pattern = "*",
   desc = "highlight selection on yank",
   callback = function()
@@ -46,7 +49,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- No auto continue comments on new line
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+  group = augroup,
   callback = function()
     vim.opt_local.formatoptions:remove({ "c", "r", "o" })
   end,
@@ -54,7 +57,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Syntax highlighting for dotenv files
 vim.api.nvim_create_autocmd("BufRead", {
-  group = vim.api.nvim_create_augroup("dotenv_ft", { clear = true }),
+  group = augroup,
   pattern = { ".env", ".env.*" },
   callback = function()
     vim.bo.filetype = "dosini"
@@ -63,7 +66,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 
 -- Show cursorline only in active window enable
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-  group = vim.api.nvim_create_augroup("active_cursorline", { clear = true }),
+  group = augroup,
   callback = function()
     vim.opt_local.cursorline = true
   end,
@@ -71,7 +74,7 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 
 -- Show cursorline only in active window disable
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
-  group = "active_cursorline",
+  group = augroup,
   callback = function()
     vim.opt_local.cursorline = false
   end,
@@ -79,10 +82,7 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 
 -- IDE like highlight when stopping cursor
 vim.api.nvim_create_autocmd("CursorMoved", {
-  group = vim.api.nvim_create_augroup(
-    "LspReferenceHighlight",
-    { clear = true }
-  ),
+  group = augroup,
   desc = "Highlight references under cursor",
   callback = function()
     -- Only run if the cursor is not in insert mode
@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 
 -- IDE like highlight when stopping cursor
 vim.api.nvim_create_autocmd("CursorMovedI", {
-  group = "LspReferenceHighlight",
+  group = augroup,
   desc = "Clear highlights when entering insert mode",
   callback = function()
     vim.lsp.buf.clear_references()

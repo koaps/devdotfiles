@@ -1,5 +1,6 @@
 require("globals")
 require("options")
-require("pack")
-require("autocmds")
+require("plugins")
 require("keymaps")
+require("autocmds")
+require("diagnostics")

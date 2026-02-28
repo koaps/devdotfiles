@@ -7,3 +7,5 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python3"
+
+vim.cmd("colorscheme vague")

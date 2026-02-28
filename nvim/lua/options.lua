@@ -10,7 +10,6 @@ vim.opt.cursorline = true -- Hightlight current line
 vim.opt.scrolloff = 10 -- Keep 10 lines above/below cursor
 vim.opt.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
 vim.opt.wrap = true -- Wrap lines
-vim.opt.cmdheight = 1 -- Command line height
 
 -- Tabbing / Indentation
 vim.opt.tabstop = 2 -- Tab width
@@ -38,6 +37,7 @@ vim.opt.showmatch = true -- Highlight matching brackets
 vim.opt.matchtime = 2 -- How long to show matching brackets
 vim.opt.completeopt = "menuone,noinsert,noselect" -- Completion options
 vim.opt.showmode = false -- Don't show mode in command line
+vim.opt.cmdheight = 1 -- single line command line
 vim.opt.pumheight = 10 -- Popup menu height
 vim.opt.pumblend = 10 -- Popup menu transparency
 vim.opt.winblend = 10 -- Floating window transparency

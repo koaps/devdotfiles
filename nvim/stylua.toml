@@ -1,4 +1,7 @@
+column_width = 85
+line_endings = "Unix"
 indent_type = "Spaces"
 indent_width = 2
-column_width = 80
-quote_style = "AutoPreferDouble"
+quote_style = "AutoPreferSingle"
+call_parentheses = "Always"
+collapse_simple_statement = "Always"

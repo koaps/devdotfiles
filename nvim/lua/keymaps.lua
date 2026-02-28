@@ -101,3 +101,8 @@ vim.keymap.set( "n", "<leader>e", ":Oil<CR>")
 
 -- Pick
 vim.keymap.set( "n", "<leader>f", ":Pick files<CR>")
+
+-- Diagnostics
+vim.keymap.set("n", "<leader>td", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
