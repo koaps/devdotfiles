@@ -21,7 +21,7 @@ if [ ! -h $XDG_CONFIG_HOME/nvim ]; then
   ln -sf $DOTDIR/nvim $XDG_CONFIG_HOME/nvim
 fi
 
-echo "A" | nvim --headless foo +qa
+echo "A" | $HOME/.neovim/bin/nvim --headless foo +qa
 
 if [ -d $HOME/.pyenv ]; then
   pyenv virtualenv 3.14.3 neovim
