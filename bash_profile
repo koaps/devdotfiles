@@ -36,7 +36,14 @@ if [ -d "$HOME/.cargo" ] ; then
     . "$HOME/.cargo/env"
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-eval "$(pyenv virtualenv-init -)"
+# add neovim path if local
+if [ -d "$HOME/.neovim" ] ; then
+  export PATH="$HOME/.neovim/bin:$PATH"
+fi
+
+if [ -d "$HOME/.pyenv" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init - bash)"
+  eval "$(pyenv virtualenv-init -)"
+fi
