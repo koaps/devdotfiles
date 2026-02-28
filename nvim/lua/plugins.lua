@@ -1,5 +1,5 @@
 vim.pack.add({
-  { src = "https://github.com/vague2k/vague.nvim" }",
+  { src = "https://github.com/vague2k/vague.nvim" },
   { src = "https://github.com/echasnovski/mini.nvim" },
   { src = "https://www.github.com/ibhagwan/fzf-lua" },
 })
