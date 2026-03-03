@@ -129,3 +129,7 @@ alias vdev="pyenv activate vdev"
 # misc
 alias dus="find . -maxdepth 1 -type d -exec du -ch -d1 '{}' +"
 alias dus_g="find . -maxdepth 1 -type d -exec du -ch -d1 '{}' + | grep -P '^[0-9]+(?:.[0-9]+)?G\s+.*$'"
+
+# kubectl
+alias k="kubectl"
+alias ks="kubectl -n kube-system"
