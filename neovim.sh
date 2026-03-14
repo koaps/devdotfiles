@@ -18,8 +18,3 @@ if [ ! -h $XDG_CONFIG_HOME/nvim ]; then
 fi
 
 echo "A" | $HOME/.neovim/bin/nvim --headless foo +qa
-
-if [ -d $HOME/.venv ]; then
-  source $HOME/.venv/bin/activate
-  pip install pynvim pyright ruff
-fi

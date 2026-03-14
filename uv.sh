@@ -8,5 +8,5 @@ if [ -z "$(which uv)" ]; then
 fi
 
 if [ ! -d "$HOME/.venv" ]; then
-  uv venv --no-project
+  uv venv --no-project $HOME/.venv
 fi
